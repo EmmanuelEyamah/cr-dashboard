@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>DoxaIQ — Customer Retention Dashboard</title>
+    <meta name="description" content="DoxaIQ helps SME businesses see who hasn't returned, who is at risk, what complaints are unresolved, and how much revenue is quietly slipping away — all in one premium dashboard." />
+    <meta name="keywords" content="customer retention, churn dashboard, follow-up tracker, revenue at risk, SME CRM, DOXA" />
+    <meta name="author" content="DOXA" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DoxaIQ — Customer Retention Dashboard" />
+    <meta property="og:description" content="See who is at risk, who needs follow-up, and how much revenue is slipping away. Built for businesses that grow smarter." />
+    <meta property="og:image" content="/assets/doxaiq-d.png" />
+    <meta property="og:url" content="https://doxaiq.com" />
+    <meta property="og:site_name" content="DoxaIQ" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DoxaIQ — Customer Retention Dashboard" />
+    <meta name="twitter:description" content="See who is at risk, who needs follow-up, and how much revenue is slipping away." />
+    <meta name="twitter:image" content="/assets/doxaiq-d.png" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#6366f1" />
+    <link rel="icon" type="image/png" href="/assets/doxaiq-d.png" />
+
+    <!-- Preloader styles — runs before JS -->
+    <style>
+      #splash {
+        position: fixed;
+        inset: 0;
+        background: #09090b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+      #splash img { height: 40px; margin-bottom: 32px; animation: pulse 1.8s ease-in-out infinite; }
+      #splash-bar {
+        width: 200px;
+        height: 3px;
+        background: rgba(99,102,241,0.2);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      #splash-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #6366f1, #8b5cf6);
+        border-radius: 999px;
+        animation: load 1.4s ease-out forwards;
+      }
+      @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+      @keyframes load { 0% { width: 0%; } 60% { width: 75%; } 100% { width: 100%; } }
+    </style>
+  </head>
+  <body>
+    <!-- Branded splash — shows instantly before React loads -->
+    <div id="splash">
+      <img src="/assets/doxaiq-d.png" alt="DoxaIQ" />
+      <div id="splash-bar"><div id="splash-fill"></div></div>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      // Hide splash once React is ready
+      window.__hideSplash = function() {
+        var splash = document.getElementById('splash');
+        if (splash) { splash.classList.add('hidden'); }
+      };
+    </script>
+  </body>
+</html>
